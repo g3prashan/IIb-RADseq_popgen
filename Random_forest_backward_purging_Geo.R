@@ -1,14 +1,10 @@
-# Introductory tutorial for conducting Random Forest on data with a categorical response variable
+# Conducting Random Forest on SNP data with a categorical response variable
 # (i.e. Random Forest using classification trees)
 
-
-
 # The code relies on the package randomForest (Liaw and Wiener 2002)
-rm(list = ls())
-library(randomForest)
+rm(list = ls()) #clear the memory
+library(randomForest) 
 library(dplyr)
-library(missForest) #to impute the missing values
-library(caret)
 
 # Import the example data set, which comprises 95 individuals genotyped at 19428 biallelic loci, where 0=homozygote 1, 1=heterozygote, 2=homozygote 2
 # The objective is to identify loci associated with geography
