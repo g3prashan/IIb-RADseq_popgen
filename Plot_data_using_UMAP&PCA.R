@@ -59,8 +59,6 @@ set.seed(42)
 pca_res = FactoMineR::PCA(X_complete, scale.unit = FALSE, graph = FALSE) # fast
 set.seed(42)
 pca_res_bin = FactoMineR::PCA(X_bin, scale.unit = FALSE, graph = FALSE)
-set.seed(42)
-mca_res = FactoMineR::MCA(X_fct_complete, graph = FALSE) # slower
 
 # PCA & MCA figures
 
@@ -128,24 +126,6 @@ ggsave('fig/pca_bin_sex.pdf', width = 7, height = 5)
   title = "PCA (binary data)")
 ggsave('fig/pca_bin_pop.pdf', width = 7, height = 5)
 
-## MCA individual plots
-factoextra::fviz_mca_ind(mca_res, geom.ind = "point",
-  col.ind = snp_tbl$geography %>% as.factor(), addEllipses = TRUE,
-  legend.title = "Geography", title = "MCA", palette = geo_col)
-ggsave('fig/mca_geography.pdf', width = 7, height = 5)
-
-factoextra::fviz_mca_ind(mca_res, geom.ind = "point",
-  col.ind = snp_tbl$sex %>% as.factor(), addEllipses = TRUE,
-  legend.title = "Sex", title = "MCA")
-ggsave('fig/mca_sex.pdf', width = 7, height = 5)
-
-factoextra::fviz_mca_ind(mca_res, geom.ind = "point",
-  col.ind = snp_tbl$poparea %>% as.factor(), addEllipses = TRUE,
-  legend.title = "Pop", title = "MCA", palette = pop_col)
-ggsave('fig/mca_pop.pdf', width = 7, height = 5)
-
-factoextra::fviz_screeplot(mca_res, addlabels = TRUE, ylim = c(0, 10), title = "MCA scree plot")
-ggsave('fig/mca_scree_plot.pdf', width = 7, height = 5)
 
 # UMAP (numeric SNPs)
 neighbors = c(13,15,20, 23, 27)
