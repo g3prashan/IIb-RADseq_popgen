@@ -103,17 +103,20 @@ d
 ggsave("fig/membership_plot_rfSex_14loci.pdf", dpi=300, width =7, height=5)
 
 
-#Find posterior population assignment probability for full dataset
+#Find posterior sex assignment probability for full dataset
 cmic <- filter(dapc.results.FullSNP, dapc.results.FullSNP$Original_Pop == dapc.results.FullSNP$Assigned_Pop) #Filter the assigned population probability that is correctly assigned
 
 mean(cmic$Posterior_membership_probability)
 
 write.table(cmic, "data/assigned_PMP_FullSNP_sex.txt", quote = FALSE, row.names=FALSE)
 
-#Find posterior population assignment probability for RfGeo dataset
+#Find posterior sex assignment probability for Rfsex dataset
 
 dmic <- filter(dapc.results.RfSex, dapc.results.RfSex$Original_Pop == dapc.results.RfSex$Assigned_Pop) #Filter the assigned population probability that is correctly assigned
 
 mean(dmic$Posterior_membership_probability)
 
-write.table(dmic, "data/assigned_PMP_Rfgeo.txt", quote = FALSE, row.names=FALSE)
+write.table(dmic, "data/assigned_PMP_Rfsex.txt", quote = FALSE, row.names=FALSE)
+
+
+
