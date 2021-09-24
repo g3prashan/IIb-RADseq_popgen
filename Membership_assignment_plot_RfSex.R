@@ -1,3 +1,8 @@
+#The code is based on
+#R package [assignPOP v1.1] tutorial
+#Alex Chen
+#2016-12-26
+
 rm(list = ls())
 
 library(vcfR)
@@ -28,9 +33,15 @@ pop(gl.rubi.FullSNP) <- pop.data$sex
 
 #Discriminant analysis of principal components
 set.seed(42)
-pnw.dapc.RfSex <- dapc(gl.rubi.RfSex, n.pca = 40, n.da = 10)
+#pnw.dapc.RfSex <- dapc(gl.rubi.RfSex, n.pca = 40, n.da = 10)
+temp <- optim.a.score(pnw.dapc.RfSex) # Optimal number of PCA 1
+pnw.dapc.RfSex <- dapc(gl.rubi.RfSex, n.pca = 1, n.da = 10)
+
+
 set.seed(42)
-pnw.dapc.FullSNP <- dapc(gl.rubi.FullSNP, n.pca = 40, n.da = 10)
+#pnw.dapc.FullSNP <- dapc(gl.rubi.FullSNP, n.pca = 40, n.da = 10)
+temp <- optim.a.score(pnw.dapc.FullSNP) #Optimal number of PCAs 13
+pnw.dapc.FullSNP <- dapc(gl.rubi.FullSNP, n.pca = 13, n.da = 10)
 
 
 #########RfSex####################
@@ -117,6 +128,10 @@ dmic <- filter(dapc.results.RfSex, dapc.results.RfSex$Original_Pop == dapc.resul
 mean(dmic$Posterior_membership_probability)
 
 write.table(dmic, "data/assigned_PMP_Rfsex.txt", quote = FALSE, row.names=FALSE)
+
+
+
+
 
 
 
