@@ -41,7 +41,7 @@ pnw.dapc.RfSex <- dapc(gl.rubi.RfGeo, n.pca = 7, n.da = 10)
 set.seed(42)
 #pnw.dapc.FullSNP <- dapc(gl.rubi.FullSNP, n.pca = 95, n.da = 10)
 temp <- optim.a.score(pnw.dapc.FullSNP) # Optimal number of PCA 28
-pnw.dapc.RfSex <- dapc(gl.rubi.FullSNP, n.pca = 28, n.da = 10)
+pnw.dapc.FullSNP <- dapc(gl.rubi.FullSNP, n.pca = 28, n.da = 10)
 
 #########RfGeo####################
 # Extract the data from DAPC list
