@@ -4,6 +4,7 @@ rm(list = ls())
 library(tidyverse)
 library(vcfR) #to get the data and locus
 library(ggrepel)
+library(splines) #needed for quantile lines
 
 ### Let's make a character vector of locus names with Chromosome ID and Position:
 
@@ -39,9 +40,9 @@ p
   theme(axis.text.x = element_text(size=20), axis.text.y = element_text(size=20))+
   theme(axis.title.y=element_text(size=30))+
     stat_quantile(formula = y ~ bs(x, 11), quantiles = 0.95, position ="identity", method = "rq",
-              show.legend = F, inherit.aes = TRUE, linetype= "dashed", color="blue", size=0.8)+
+              show.legend = F, inherit.aes = TRUE, linetype= "dashed", color="green", size=0.8)+
   stat_quantile(formula = y ~ bs(x, 11), quantiles = 0.5, position ="identity", method = "rq",
-                show.legend = F, inherit.aes = TRUE, linetype= "dashed", color="purple", size=0.8)
+                show.legend = F, inherit.aes = TRUE, linetype= "dashed", color="yellow", size=0.8)
 
 ggsave("fig/Arlequin_loci_scan_geo2.pdf", dpi=300, width=11, height=8)
 
