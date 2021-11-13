@@ -1,5 +1,7 @@
 #Conducting Random Forest on data with a categorical response variable Sex
 
+#The code is modified using the tutorial from Brieuc et al., 2018 # https://onlinelibrary.wiley.com/doi/10.1111/1755-0998.12773
+
 # The code relies on the package randomForest (Liaw and Wiener 2002)
 rm(list = ls())
 
